@@ -1,51 +1,36 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    public static int[] twoSum (int[] input, int target) {
-        Map<Integer, Integer> foundIt = new HashMap<>();
+    public List<String> fizzBuzz(int n) {
 
-        for (int i = 0; i < input.length; i++) {
-            int compliment = target - input[i];
+        List<String> arr = new ArrayList<>(n);
 
-            if (foundIt.containsKey(compliment)) {
-                return new int[]{foundIt.get(compliment), i};
+        for (int i=0; i < n; i++){
+            int next = i+1;
+
+            int modulus3 = next % 3;
+            int modulus5 = next % 5;
+            if (modulus3 == 0 &&  modulus5 == 0) {
+                arr.add("FizzBuzz");
             }
-
-            foundIt.put(input[i], i);
-
+            else if (modulus3 == 0) {
+                arr.add("Fizz");
+            } else if (modulus5 == 0) {
+                arr.add("Buzz");
+            }
+            else {
+                arr.add(String.valueOf(next));
+            }
         }
-        return null;
+        return arr;
     }
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
 
-        int[] inputArr = new int[n];
-        System.out.println("Enter " + n + " numbers:");
-        for(int i = 0; i < n; i++) {
-            inputArr[i] = scanner.nextInt();
-
-        }
-
-        System.out.print("Enter target sum: ");
-
-        int target = scanner.nextInt();
-
-        int[] result = twoSum(inputArr, target);
-        if (result != null) {
-            System.out.println("Indices found: " + Arrays.toString(result));
-        } else {
-            System.out.println("No two numbers add up to " + target);
-        }
-        scanner.close();
 
     }
 }
