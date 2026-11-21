@@ -8,21 +8,18 @@ public class Main {
 
         List<String> arr = new ArrayList<>(n);
 
-        for (int i=0; i < n; i++){
-            int next = i+1;
+        for (int i = 1; i <= n; i++) {
+            boolean divisibleBy3 = (i % 3 == 0);
+            boolean divisibleBy5 = (i % 5 == 0);
 
-            int modulus3 = next % 3;
-            int modulus5 = next % 5;
-            if (modulus3 == 0 &&  modulus5 == 0) {
+            if (divisibleBy3 && divisibleBy5) {
                 arr.add("FizzBuzz");
-            }
-            else if (modulus3 == 0) {
+            } else if (divisibleBy3) {
                 arr.add("Fizz");
-            } else if (modulus5 == 0) {
+            } else if (divisibleBy5) {
                 arr.add("Buzz");
-            }
-            else {
-                arr.add(String.valueOf(next));
+            } else {
+                arr.add(String.valueOf(i));
             }
         }
         return arr;
