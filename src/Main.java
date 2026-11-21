@@ -4,24 +4,20 @@ import java.util.*;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    public List<String> fizzBuzz(int n) {
+    public static void reverseString(char[] s) {
 
-        List<String> arr = new ArrayList<>(n);
+        for (int left = 0, right = s.length - 1; left < right; left++, right--) {
 
-        for (int i = 1; i <= n; i++) {
-            StringBuilder sb = new StringBuilder();
 
-            if (i % 3 == 0) sb.append("Fizz");
-            if (i % 5 == 0) sb.append("Buzz");
-
-            arr.add(sb.isEmpty() ? String.valueOf(i) : sb.toString());
+            char temp = s[left];
+            s[left] = s[right];
+            System.out.println(left);
+            System.out.println(right);
+            s[right] = temp;
         }
-        return arr;
     }
 
     public static void main(String[] args) {
-
-
-
+        reverseString(new char[]{'T', 'a', 'l', 'h', 'a'});
     }
 }
