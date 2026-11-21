@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -6,12 +8,17 @@ import java.util.Scanner;
 public class Main {
 
     public static int[] twoSum (int[] input, int target) {
-        for (int i = 0; i < input.length; i++ ){
-            for (int j = i+1; j < input.length; j++ ) {
-                if ( input[i] + input[j]  == target) {
-                    return new int[]{i, j};
-                }
+        Map<Integer, Integer> foundIt = new HashMap<>();
+
+        for (int i = 0; i < input.length; i++) {
+            int compliment = target - input[i];
+
+            if (foundIt.containsKey(compliment)) {
+                return new int[]{foundIt.get(compliment), i};
             }
+
+            foundIt.put(input[i], i);
+
         }
         return null;
     }
