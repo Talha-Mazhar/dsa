@@ -3,22 +3,19 @@ import java.util.*;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-
-    public static boolean isPalindrome(int x) {
-
-        if (x < 0 || (x % 10 == 0 && x != 0)) {
-            return false;
+    public static int[] plusOne(int[] digits) {
+        for (int i = digits.length-1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
         }
-        int reverseHalf = 0;
-        while (x > reverseHalf) {
-            int lastDigit = x % 10;
-            reverseHalf = (reverseHalf * 10) + lastDigit;
-            x = x / 10;
-        }
-        return x == reverseHalf || x == reverseHalf / 10;
+        int[] result = new int[digits.length +1];
+        result[0] = 1;
+        return result;
     }
 
     public static void main(String[] args) {
-
     }
 }
