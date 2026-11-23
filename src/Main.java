@@ -17,20 +17,15 @@ public class Main {
         };
     }
 
-    public static int romanToInt(String s) {
-        int result = 0;
-        int prevValue = 0;
-        for (int i =  s.length() - 1; i >= 0; i--) {
-            int currentValue = getValue(s.charAt(i));
-            if (currentValue < prevValue) {
-                result -= currentValue;
-            } else {
-                result += currentValue;
-            }
-            prevValue = currentValue;
+    public static boolean containsDuplicate(int[] nums) {
 
-        }
-        return result;
+       Set<Integer> seen = new HashSet<>();
+       for (int num : nums){
+            if (!seen.add(num)) {
+                return true;
+            }
+       }
+      return false;
     }
 
     public static void main(String[] args) {
