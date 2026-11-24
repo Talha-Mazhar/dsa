@@ -3,29 +3,24 @@ import java.util.*;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()){
+            return false;
+        }
 
-    private static int getValue(char c) {
-        return switch (c) {
-            case 'I' -> 1;
-            case 'V' -> 5;
-            case 'X' -> 10;
-            case 'L' -> 50;
-            case 'C' -> 100;
-            case 'D' -> 500;
-            case 'M' -> 1000;
-            default -> 0;
-        };
-    }
+        Map<Character, Integer>  isAna = new HashMap<>();
 
-    public static boolean containsDuplicate(int[] nums) {
+        for (int i = 0; i < s.length(); i++) {
+            isAna.put(s.charAt(i), isAna.getOrDefault(s.charAt(i),0) + 1);
+            isAna.put(t.charAt(i), isAna.getOrDefault(t.charAt(i), 0) - 1);
+        }
 
-       Set<Integer> seen = new HashSet<>();
-       for (int num : nums){
-            if (!seen.add(num)) {
-                return true;
+        for (int count : isAna.values()){
+            if (count != 0) {
+                return false;
             }
-       }
-      return false;
+        }
+        return true;
     }
 
     public static void main(String[] args) {
